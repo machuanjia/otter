@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-19 11:49:57
- * @LastEditTime: 2021-10-26 15:20:30
+ * @LastEditTime: 2021-10-26 17:40:12
  * @FilePath: /otter/tailwind.config.js
  * @Description:
  */

@@ -5,6 +5,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@fullhuman/postcss-purgecss": "4.0.0",
+    "@ithink/components": "0.0.10",
     "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -20,6 +21,7 @@
     "i18next-browser-languagedetector": "^6.1.2",
     "mocker-api": "^2.9.3",
     "mockjs": "^1.1.0",
+    "nprogress": "^0.2.0",
     "qiankun": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

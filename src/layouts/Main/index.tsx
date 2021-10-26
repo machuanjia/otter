@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:35:49
- * @LastEditTime: 2021-10-26 15:51:52
+ * @LastEditTime: 2021-10-26 19:55:07
  * @FilePath: /otter/src/layouts/Main/index.tsx
  * @Description:
  */
@@ -62,7 +62,7 @@ import styles from './index.module.less'
 class Main extends Component {
   componentDidMount() {
     // @ts-ignore
-    this.props.history.push('/dashboard')
+    // this.props.history.push('/dashboard')
   }
   render() {
     return <>
@@ -84,11 +84,7 @@ class Main extends Component {
         <div id="otter" className="flex-1">
           <AsyncRoutes />
         </div>
-        <div id="otterData" className="flex-1 hidden" />
-        <div id="otterExperiment" className="flex-1 hidden" />
-        <div id="otterModel" className="flex-1 hidden" />
-        <div id="otterTest" className="flex-1 hidden" />
-        <div id="otterPublish" className="flex-1 hidden" />
+
       </section>
     </>
   }

@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-19 16:03:39
- * @LastEditTime: 2021-10-26 14:56:14
+ * @LastEditTime: 2021-10-26 19:19:18
  * @FilePath: /otter/src/routes/index.tsx
  * @Description:
  */
@@ -11,6 +11,7 @@ import { lazy, Suspense, useEffect } from 'react'
 import { compact } from 'lodash'
 import { Route, Switch } from 'react-router-dom'
 
+import { PageLoading } from '@/components'
 import type { IRoute } from '@/models'
 import { useAppDispatch, useAppSelector } from '@/stores'
 import { selectPermissions, setRoutes } from '@/stores/app'
@@ -37,17 +38,6 @@ export const generateRoutes = (routes: any, extraProps = {}, switchProps = {}) =
   ) : null
 }
 
-export const RouteViewer = ({ routers }) => {
-  return <>{generateRoutes(routers)}</>
-}
-
-export const StaticRoutes = () => {
-  return (
-    <Suspense fallback={<div>--------</div>}>
-      {generateRoutes(staticRoutes)}
-    </Suspense>
-  )
-}
 const filterProps = (menus) => {
   if (menus && menus.length > 0) {
     return menus.map((item) => {
@@ -80,6 +70,7 @@ const getPermissionsRouters = (menus, permissions) => {
   }
   return []
 }
+
 export const getFlattenRoutes = (routeList: IRoute[], flattenRoutes: IRoute[]) => {
   routeList.forEach((route) => {
     flattenRoutes.push(route)
@@ -88,6 +79,19 @@ export const getFlattenRoutes = (routeList: IRoute[], flattenRoutes: IRoute[]) =
     }
   })
 }
+
+export const RouteViewer = ({ routers }) => {
+  return <>{generateRoutes(routers)}</>
+}
+
+export const StaticRoutes = () => {
+  return (
+    <Suspense fallback={<PageLoading/>}>
+      {generateRoutes(staticRoutes)}
+    </Suspense>
+  )
+}
+
 export const AsyncRoutes = () => {
   const permissions = useAppSelector(selectPermissions)
   const dispatch = useAppDispatch()
@@ -99,7 +103,7 @@ export const AsyncRoutes = () => {
     dispatch(setRoutes(permissionNavs))
   }, [])
   return (
-    <Suspense fallback={<div>----------</div>}>
+    <Suspense fallback={<PageLoading/>}>
       {generateRoutes(routes)}
     </Suspense>
   )

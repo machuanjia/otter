@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:12:45
- * @LastEditTime: 2021-10-26 14:30:25
+ * @LastEditTime: 2021-10-26 19:51:35
  * @FilePath: /otter/src/routes/async.tsx
  * @Description:
  */
@@ -20,38 +20,28 @@ const routes = [
     },
     component:lazy(() => import('@/views/Dashboard')),
   },
-  {
-    path: '/counter',
-    meta: {
-      key: 'Counter',
-      name: '计数器',
-      icon: 'counter',
-      permission: 'counter*',
-    },
-    component:lazy(() => import('@/layouts/Route')),
-    children: [
-      {
-        path: '/counter/index',
-        meta: {
-          key: 'Counter.counter',
-          name: 'home',
-          icon: '',
-          permission: 'counter*.counter',
-        },
-        component: lazy(() => import('@/views/Counter')),
-      },
-    ],
-  },
-  {
-    path: '/home',
-    meta: {
-      key: 'Home',
-      name: 'home',
-      icon: 'home',
-      permission: 'home',
-    },
-    component: lazy(() => import('@/views/Home')),
-  },
+  // {
+  //   path: '/counter',
+  //   meta: {
+  //     key: 'Counter',
+  //     name: '计数器',
+  //     icon: 'counter',
+  //     permission: 'counter*',
+  //   },
+  //   component:lazy(() => import('@/layouts/Route')),
+  //   children: [
+  //     {
+  //       path: '/counter/index',
+  //       meta: {
+  //         key: 'Counter.counter',
+  //         name: 'home',
+  //         icon: '',
+  //         permission: 'counter*.counter',
+  //       },
+  //       component: lazy(() => import('@/views/Counter')),
+  //     },
+  //   ],
+  // },
   {
     path: '/data',
     component: lazy(() => import('@/views/App')),
