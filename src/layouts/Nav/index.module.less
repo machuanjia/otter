@@ -1,16 +1,25 @@
 .nav {
   @apply w-14 !important;
   :global {
+    .ant-menu-item a{
+      @apply text-icon !important;
+    }
+    .ant-menu-item-active a{
+      @apply text-primary !important;
+    }
     .ant-menu-item,
     .ant-menu-submenu {
-      @apply flex items-center justify-center h-14 mb-0 mt-0 !important;
+      @apply flex items-center justify-center h-14 mb-0 mt-0 text-icon !important;
     }
     .ant-menu-item-selected,
     .ant-menu-submenu-selected {
-      @apply text-primary bg-hover !important;
+      @apply text-primary bg-active !important;
     }
     .ant-menu-submenu-title {
       @apply m-0 h-14 flex items-center justify-center !important;
+    }
+    .ant-menu-item-selected a, .ant-menu-item-selected a:hover{
+      @apply text-primary !important;
     }
   }
   &:hover {

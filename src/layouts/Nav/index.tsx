@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-21 17:06:46
- * @LastEditTime: 2021-10-26 09:19:37
+ * @LastEditTime: 2021-10-26 14:52:39
  * @FilePath: /otter/src/layouts/Nav/index.tsx
  * @Description:
  */
@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 import { useAppSelector } from '@/stores'
 import { selectRoutes } from '@/stores/app'
 
+import icons from './icons'
 import styles from './index.module.less'
 
 const { SubMenu } = Menu
@@ -24,7 +25,15 @@ const Nav = () => {
         }
         if (item.children && item.children.length > 0) {
           return (
-            <SubMenu key={item.meta.key} title={item.meta.name}>
+            <SubMenu
+              key={item.meta.key}
+              title={
+                <>
+                  {icons[item.meta.icon]}
+                  <span className={styles['nav-text']}>{item.meta.name}</span>
+                </>
+              }
+            >
               {getMenu(item.children)}
             </SubMenu>
           )
@@ -32,7 +41,8 @@ const Nav = () => {
         return (
           <Menu.Item key={item.meta.key} title={item.meta.name}>
             <Link to={item.path}>
-              <span className="nav-text">{item.meta.name}</span>
+              {icons[item.meta.icon]}
+              <span className={styles['nav-text']}>{item.meta.name}</span>
             </Link>
           </Menu.Item>
         )

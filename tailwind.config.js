@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-19 11:49:57
- * @LastEditTime: 2021-10-21 16:33:32
+ * @LastEditTime: 2021-10-26 15:20:30
  * @FilePath: /otter/tailwind.config.js
  * @Description:
  */
@@ -28,7 +28,8 @@ module.exports = {
       input: 'var(--color-bg-input)',
       disable: 'var(--color-bg-disable)',
       primary: 'var(--color-bg-primary)',
-      hover: 'var(--color-bg-hover)'
+      hover: 'var(--color-bg-hover)',
+      active: 'var(--color-bg-active)'
     },
     textColor: {
       white: 'var(--color-text-white)',
@@ -40,6 +41,7 @@ module.exports = {
     },
     borderColor: {
       divider: 'var(--color-divider)',
+      primary: 'var(--color-divider-primary)',
     },
   },
   variants: {
@@ -53,5 +55,4 @@ module.exports = {
       defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
     })
   ]
-  // plugins: [require('tailwindcss'), require('autoprefixer')],
 }

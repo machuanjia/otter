@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:35:49
- * @LastEditTime: 2021-10-26 10:07:21
+ * @LastEditTime: 2021-10-26 15:17:35
  * @FilePath: /otter/src/layouts/Main/index.tsx
  * @Description:
  */
@@ -27,7 +27,7 @@ const Main = () => {
   useEffect(() => {
     dispatch(AppService.getInfo())
   }, [])
-  if (status === STATUS.LOADING) {
+  if (status !== STATUS.IDLE) {
     return <div>loading1212121</div>
   }
   return (
@@ -49,7 +49,7 @@ const Main = () => {
       <div id="otter" className="flex-1">
         <AsyncRoutes />
       </div>
-      <div id="otterData" className="flex-1" />
+      <div id="otterData" className="flex-1 hidden" />
       <div id="otterExperiment" className="flex-1 hidden"/>
       <div id="otterModel" className="flex-1 hidden"/>
       <div id="otterTest" className="flex-1 hidden"/>

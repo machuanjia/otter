@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-19 16:03:39
- * @LastEditTime: 2021-10-25 18:09:21
+ * @LastEditTime: 2021-10-26 14:56:14
  * @FilePath: /otter/src/routes/index.tsx
  * @Description:
  */
@@ -43,7 +43,7 @@ export const RouteViewer = ({ routers }) => {
 
 export const StaticRoutes = () => {
   return (
-    <Suspense fallback={<div style={{ height: '300px', background: 'red' }}>loading</div>}>
+    <Suspense fallback={<div>--------</div>}>
       {generateRoutes(staticRoutes)}
     </Suspense>
   )
@@ -99,7 +99,7 @@ export const AsyncRoutes = () => {
     dispatch(setRoutes(permissionNavs))
   }, [])
   return (
-    <Suspense fallback={<div style={{ height: '300px', background: 'red' }}>loading</div>}>
+    <Suspense fallback={<div>----------</div>}>
       {generateRoutes(routes)}
     </Suspense>
   )
