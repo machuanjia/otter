@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:35:49
- * @LastEditTime: 2021-10-25 17:07:08
+ * @LastEditTime: 2021-10-26 10:07:21
  * @FilePath: /otter/src/layouts/Main/index.tsx
  * @Description:
  */
@@ -46,9 +46,14 @@ const Main = () => {
           <Preference />
         </footer>
       </nav>
-      <div className="flex-1">
+      <div id="otter" className="flex-1">
         <AsyncRoutes />
       </div>
+      <div id="otterData" className="flex-1" />
+      <div id="otterExperiment" className="flex-1 hidden"/>
+      <div id="otterModel" className="flex-1 hidden"/>
+      <div id="otterTest" className="flex-1 hidden"/>
+      <div id="otterPublish" className="flex-1 hidden"/>
     </section>
   )
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-21 17:06:46
- * @LastEditTime: 2021-10-25 17:22:45
+ * @LastEditTime: 2021-10-26 09:19:37
  * @FilePath: /otter/src/layouts/Nav/index.tsx
  * @Description:
  */
@@ -42,7 +42,7 @@ const Nav = () => {
   }
   return (
     <div>
-      <Menu inlineCollapsed={true} className={styles.nav}>
+      <Menu inlineCollapsed={true} mode="inline" className={styles.nav}>
         {getMenu(routes)}
       </Menu>
     </div>

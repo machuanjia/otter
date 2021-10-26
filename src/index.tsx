@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-19 16:43:46
- * @LastEditTime: 2021-10-21 15:38:07
+ * @LastEditTime: 2021-10-26 09:15:11
  * @FilePath: /otter/src/index.tsx
  * @Description:
  */
@@ -18,17 +18,16 @@ import '@/styles/index.less'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { store } from './stores'
+import './register'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ConfigProvider locale={getAntdLocal()} componentSize="middle">
-        <Router>
-          <App />
-        </Router>
-      </ConfigProvider>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <ConfigProvider locale={getAntdLocal()} componentSize="middle">
+      <Router>
+        <App />
+      </Router>
+    </ConfigProvider>
+  </Provider>,
   document.getElementById('root'),
 )
 

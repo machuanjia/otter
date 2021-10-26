@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:12:45
- * @LastEditTime: 2021-10-25 18:10:00
+ * @LastEditTime: 2021-10-26 09:56:22
  * @FilePath: /otter/src/routes/async.tsx
  * @Description:
  */
@@ -41,6 +41,17 @@ const routes = [
       permission: 'home',
     },
     component: lazy(() => import('@/views/Home')),
+  },
+  {
+    path: '/data',
+    component: lazy(() => import('@/views/App')),
+    meta: {
+      key: 'otterData',
+      name: 'app',
+      icon: 'dashboard',
+      permission: 'home',
+      redirect: '/data/home'
+    },
   },
 ]
 
