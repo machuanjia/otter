@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:35:49
- * @LastEditTime: 2021-10-26 15:25:01
+ * @LastEditTime: 2021-10-26 15:51:52
  * @FilePath: /otter/src/layouts/Main/index.tsx
  * @Description:
  */
@@ -60,6 +60,10 @@ import styles from './index.module.less'
 // }
 @GuardDecorator()
 class Main extends Component {
+  componentDidMount() {
+    // @ts-ignore
+    this.props.history.push('/dashboard')
+  }
   render() {
     return <>
       <section className="h-screen flex flex-row">

@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 19:03:31
- * @LastEditTime: 2021-10-25 17:51:11
+ * @LastEditTime: 2021-10-26 15:50:14
  * @FilePath: /otter/src/decorators/Guard/index.tsx
  * @Description:
  */
@@ -39,8 +39,8 @@ export const GuardDecorator = () => (WrappedComponent) => {
     }
     render() {
       // @ts-ignore
-      const { status, props } = this.props
-      return <>{status !== STATUS.IDLE ? <>loading</> : <WrappedComponent {...props} />}</>
+      const { status } = this.props
+      return <>{status !== STATUS.IDLE ? <>loading</> : <WrappedComponent {...this.props} />}</>
     }
   }
   return Guard
