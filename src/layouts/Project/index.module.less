@@ -6,3 +6,23 @@
     transform: scale(0.85);
   }
 }
+.project-avatar{
+  @apply border !important;
+}
+.arrow{
+  top:18px;
+  right: -14px;
+  transform: rotate(45deg);
+  @apply w-4 h-4 bg-white absolute;
+}
+:global{
+  .project-wrap{
+    @apply left-14;
+    .ant-drawer-content-wrapper{
+      @apply shadow-none border-r border-solid border-divider !important;
+      .ant-drawer-body{
+        @apply p-0;
+      }
+    }
+  }
+}

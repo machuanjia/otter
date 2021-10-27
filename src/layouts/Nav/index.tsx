@@ -1,15 +1,15 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-21 17:06:46
- * @LastEditTime: 2021-10-26 14:52:39
+ * @LastEditTime: 2021-10-27 10:39:54
  * @FilePath: /otter/src/layouts/Nav/index.tsx
  * @Description:
  */
 import { Menu } from 'antd'
 import { Link } from 'react-router-dom'
 
-import { useAppSelector } from '@/stores'
-import { selectRoutes } from '@/stores/app'
+import { useAppDispatch, useAppSelector } from '@/stores'
+import { selectRoutes, setProjectVisible } from '@/stores/app'
 
 import icons from './icons'
 import styles from './index.module.less'
@@ -17,6 +17,7 @@ import styles from './index.module.less'
 const { SubMenu } = Menu
 const Nav = () => {
   const routes = useAppSelector(selectRoutes)
+  const dispatch = useAppDispatch()
   const getMenu = (menus) => {
     if (menus && menus.length > 0) {
       return menus.map((item) => {
@@ -50,9 +51,12 @@ const Nav = () => {
     }
     return []
   }
+  const selectNav = ()=>{
+    dispatch(setProjectVisible(false))
+  }
   return (
     <div>
-      <Menu inlineCollapsed={true} mode="inline" className={styles.nav}>
+      <Menu inlineCollapsed={true} mode="inline" className={styles.nav} onClick={selectNav}>
         {getMenu(routes)}
       </Menu>
     </div>
