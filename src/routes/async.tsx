@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:12:45
- * @LastEditTime: 2021-10-26 19:51:35
+ * @LastEditTime: 2021-10-27 15:13:11
  * @FilePath: /otter/src/routes/async.tsx
  * @Description:
  */
@@ -18,41 +18,50 @@ const routes = [
       icon: 'dashboard',
       permission: 'dashboard*',
     },
-    component:lazy(() => import('@/views/Dashboard')),
+    component: lazy(() => import('@/views/Dashboard')),
   },
-  // {
-  //   path: '/counter',
-  //   meta: {
-  //     key: 'Counter',
-  //     name: '计数器',
-  //     icon: 'counter',
-  //     permission: 'counter*',
-  //   },
-  //   component:lazy(() => import('@/layouts/Route')),
-  //   children: [
-  //     {
-  //       path: '/counter/index',
-  //       meta: {
-  //         key: 'Counter.counter',
-  //         name: 'home',
-  //         icon: '',
-  //         permission: 'counter*.counter',
-  //       },
-  //       component: lazy(() => import('@/views/Counter')),
-  //     },
-  //   ],
-  // },
   {
     path: '/data',
     component: lazy(() => import('@/views/App')),
     meta: {
       key: 'otterData',
-      name: 'app',
+      container: 'otterData',
+      name: '数据',
       icon: 'data',
       permission: 'home',
-      redirect: '/data/home'
     },
-  },
+    children: [{
+      path: '/data/lake',
+      component: lazy(() => import('@/views/App')),
+      meta: {
+        key: 'otterDataLake',
+        container: 'otterData',
+        name: '数据湖',
+        icon: 'data',
+        permission: 'dataLake*',
+      }
+    }, {
+      path: '/data/set',
+      component: lazy(() => import('@/views/App')),
+      meta: {
+        key: 'otterDataSet',
+        container: 'otterData',
+        name: '数据集',
+        icon: 'data',
+        permission: 'dataSet*',
+      }
+    }, {
+      path: '/data/remark',
+      component: lazy(() => import('@/views/App')),
+      meta: {
+        key: 'otterDataRemark',
+        container: 'otterData',
+        name: '标注任务',
+        icon: 'data',
+        permission: 'dataRemark*',
+      }
+    }]
+  }
 ]
 
 export default routes

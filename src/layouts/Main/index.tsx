@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:35:49
- * @LastEditTime: 2021-10-26 19:55:07
+ * @LastEditTime: 2021-10-27 15:00:25
  * @FilePath: /otter/src/layouts/Main/index.tsx
  * @Description:
  */
@@ -84,7 +84,6 @@ class Main extends Component {
         <div id="otter" className="flex-1">
           <AsyncRoutes />
         </div>
-
       </section>
     </>
   }

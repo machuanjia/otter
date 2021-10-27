@@ -1,17 +1,18 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-19 16:03:39
- * @LastEditTime: 2021-10-26 19:19:18
+ * @LastEditTime: 2021-10-27 15:10:20
  * @FilePath: /otter/src/routes/index.tsx
  * @Description:
  */
 
-import { lazy, Suspense, useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 
 import { compact } from 'lodash'
+import { NotFond } from 'otter-pro'
 import { Route, Switch } from 'react-router-dom'
 
-import { PageLoading } from '@/components'
+import { ProcessLoading } from '@/components'
 import type { IRoute } from '@/models'
 import { useAppDispatch, useAppSelector } from '@/stores'
 import { selectPermissions, setRoutes } from '@/stores/app'
@@ -33,7 +34,7 @@ export const generateRoutes = (routes: any, extraProps = {}, switchProps = {}) =
           }}
         />
       ))}
-      <Route component={lazy(() => import('@/components/404'))} />
+      <Route component={NotFond} />
     </Switch>
   ) : null
 }
@@ -85,11 +86,7 @@ export const RouteViewer = ({ routers }) => {
 }
 
 export const StaticRoutes = () => {
-  return (
-    <Suspense fallback={<PageLoading/>}>
-      {generateRoutes(staticRoutes)}
-    </Suspense>
-  )
+  return <Suspense fallback={<ProcessLoading />}>{generateRoutes(staticRoutes)}</Suspense>
 }
 
 export const AsyncRoutes = () => {
@@ -102,9 +99,5 @@ export const AsyncRoutes = () => {
   useEffect(() => {
     dispatch(setRoutes(permissionNavs))
   }, [])
-  return (
-    <Suspense fallback={<PageLoading/>}>
-      {generateRoutes(routes)}
-    </Suspense>
-  )
+  return <Suspense fallback={<ProcessLoading />}>{generateRoutes(routes)}</Suspense>
 }

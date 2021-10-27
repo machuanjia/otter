@@ -1,14 +1,14 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 19:03:31
- * @LastEditTime: 2021-10-26 18:09:10
+ * @LastEditTime: 2021-10-27 12:17:07
  * @FilePath: /otter/src/decorators/Guard/index.tsx
  * @Description:
  */
 
 import React, { Component } from 'react'
 
-import { GlobalLoading } from '@ithink/components'
+import { GlobalLoading } from 'otter-pro'
 import { connect } from 'react-redux'
 
 import { STATUS } from '@/constants'
@@ -41,7 +41,7 @@ export const GuardDecorator = () => (WrappedComponent) => {
     render() {
       // @ts-ignore
       const { status } = this.props
-      return <>{status !== STATUS.IDLE ? <div className=" h-full w-full flex justify-center items-center absolute"><GlobalLoading description="卓越、有爱" /></div> : <WrappedComponent {...this.props} />}</>
+      return <>{status !== STATUS.IDLE ? <div className=" h-full w-full flex justify-center items-center absolute"><GlobalLoading description="卓越、有爱" className=""/></div> : <WrappedComponent {...this.props} />}</>
     }
   }
   return Guard
