@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 19:03:31
- * @LastEditTime: 2021-10-27 12:17:07
+ * @LastEditTime: 2021-10-27 15:44:36
  * @FilePath: /otter/src/decorators/Guard/index.tsx
  * @Description:
  */
@@ -9,9 +9,9 @@
 import React, { Component } from 'react'
 
 import { GlobalLoading } from 'otter-pro'
+import { STATUS } from 'otter-pro'
 import { connect } from 'react-redux'
 
-import { STATUS } from '@/constants'
 import AppService from '@/stores/app/app.service'
 
 type IProps = {

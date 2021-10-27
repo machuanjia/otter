@@ -7,8 +7,8 @@
  */
 
 import { createSlice } from '@reduxjs/toolkit'
+import { STATUS } from 'otter-pro'
 
-import { STATUS } from '@/constants'
 import type { IRoute } from '@/models'
 
 import AppService from './app.service'
