@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-21 16:00:25
- * @LastEditTime: 2021-10-28 10:49:25
+ * @LastEditTime: 2021-10-28 10:52:54
  * @FilePath: /otter/src/layouts/Preference/index.tsx
  * @Description:
  */
@@ -10,7 +10,7 @@ import { CloseOutlined, UserOutlined, PlusCircleOutlined } from '@ant-design/ico
 import { Avatar, Popover, Drawer } from 'antd'
 
 import { useAppDispatch, useAppSelector } from '@/stores'
-import { selectTeamVisible, setTeamVisible } from '@/stores/app'
+import { selectTeamVisible, setProjectVisible, setTeamVisible } from '@/stores/app'
 
 import styles from './index.module.less'
 import { Content } from './PreferencePop'
@@ -22,6 +22,7 @@ const Preference = () => {
     dispatch(setTeamVisible(false))
   }
   const teamSelect = () => {
+    dispatch(setProjectVisible(false))
     dispatch(setTeamVisible(true))
   }
 

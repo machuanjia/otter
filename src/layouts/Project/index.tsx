@@ -1,16 +1,20 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-21 15:09:49
- * @LastEditTime: 2021-10-27 17:28:08
+ * @LastEditTime: 2021-10-28 11:15:35
  * @FilePath: /otter/src/layouts/Project/index.tsx
  * @Description:
  */
+
+import { useEffect } from 'react'
 
 import { CloseOutlined, EllipsisOutlined, PlusCircleOutlined, ProjectOutlined } from '@ant-design/icons'
 import { Avatar, Drawer } from 'antd'
 
 import { useAppDispatch, useAppSelector } from '@/stores'
-import { selectProjectVisible, setProjectVisible } from '@/stores/app'
+import { selectProjectVisible, setProjectVisible, setTeamVisible } from '@/stores/app'
+import { selectProjects } from '@/stores/project'
+import ProjectService from '@/stores/project/project.service'
 
 import styles from './index.module.less'
 
@@ -28,23 +32,17 @@ const List = ({ list, selected = '' }) => {
 const Project = () => {
   const isVisible = useAppSelector(selectProjectVisible)
   const dispatch = useAppDispatch()
-  const onClose = () => { }
-  const list = [
-    {
-      id: '1',
-      name: '紫金矿业',
-    },
-    {
-      id: '2',
-      name: '中国银行',
-    },
-  ]
+  const projects = useAppSelector(selectProjects)
+  useEffect(() => {
+    dispatch(ProjectService.getProjects())
+  }, [])
   return (
     <>
       <div
         className="w-14 h-11 flex justify-center items-center bg-primary relative overflow-hidden opacity-90 cursor-pointer hover:opacity-100"
         onClick={() => {
           dispatch(setProjectVisible(true))
+          dispatch(setTeamVisible(false))
         }}
       >
         <Avatar className={styles.avatar} icon={<ProjectOutlined />} />
@@ -55,7 +53,6 @@ const Project = () => {
         placement="left"
         closable={false}
         width={260}
-        onClose={onClose}
         visible={isVisible}
         mask={false}
         className="project-wrap"
@@ -74,7 +71,7 @@ const Project = () => {
             /></div>
           </header>
           <div className=" flex-1">
-            <List list={list} selected="1" />
+            <List list={projects} />
           </div>
           <footer className="border-t border-solid border-divider p-2 flex justify-center items-center text-secondary cursor-pointer hover:text-primary">
             <PlusCircleOutlined className=" mr-1" /> 新建项目
