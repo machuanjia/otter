@@ -1,22 +1,26 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-21 16:00:25
- * @LastEditTime: 2021-10-28 10:52:54
+ * @LastEditTime: 2021-10-28 14:55:16
  * @FilePath: /otter/src/layouts/Preference/index.tsx
  * @Description:
  */
 
-import { CloseOutlined, UserOutlined, PlusCircleOutlined } from '@ant-design/icons'
+import { CloseOutlined, UserOutlined, PlusCircleOutlined, EllipsisOutlined } from '@ant-design/icons'
 import { Avatar, Popover, Drawer } from 'antd'
+import { DRAWER_SIZE, SimpleList } from 'otter-pro'
 
-import { useAppDispatch, useAppSelector } from '@/stores'
-import { selectTeamVisible, setProjectVisible, setTeamVisible } from '@/stores/app'
+import { selectTeams, useAppDispatch, useAppSelector } from '@/stores'
+import { selectAppTeamVisible, setProjectVisible, setTeamVisible } from '@/stores/app'
+import TeamService from '@/stores/team/team.service'
 
 import styles from './index.module.less'
-import { Content } from './PreferencePop'
+import { Content } from './PopContent'
+
 
 const Preference = () => {
-  const isVisible = useAppSelector(selectTeamVisible)
+  const isVisible = useAppSelector(selectAppTeamVisible)
+  const teams = useAppSelector(selectTeams)
   const dispatch = useAppDispatch()
   const onClose = () => {
     dispatch(setTeamVisible(false))
@@ -24,6 +28,16 @@ const Preference = () => {
   const teamSelect = () => {
     dispatch(setProjectVisible(false))
     dispatch(setTeamVisible(true))
+    dispatch(TeamService.getTeams())
+  }
+
+  const selectTeam = () => { }
+
+  const SuffixItem = ({ entity }) => {
+    const handleSuffix = () => {
+      console.log(entity)
+    }
+    return <EllipsisOutlined onClick={handleSuffix} />
   }
 
   return (
@@ -45,7 +59,7 @@ const Preference = () => {
         title={null}
         placement="left"
         closable={false}
-        width={260}
+        width={DRAWER_SIZE.SM}
         onClose={onClose}
         visible={isVisible}
         mask={false}
@@ -58,7 +72,6 @@ const Preference = () => {
               <span className="ml-2 text-secondary">默认团队</span>
             </div>
             <div className=" w-6 h-6 hover:bg-hover flex justify-center items-center">
-              {' '}
               <CloseOutlined
                 onClick={() => {
                   dispatch(setTeamVisible(false))
@@ -67,7 +80,9 @@ const Preference = () => {
               />
             </div>
           </header>
-          <div className=" flex-1" />
+          <div className=" flex-1" >
+            <SimpleList list={teams} onItemClick={selectTeam} Suffix={SuffixItem} className={styles['team-list']} />
+          </div>
           <footer className="border-t border-solid border-divider p-2 flex justify-center items-center text-secondary cursor-pointer hover:text-primary">
             <PlusCircleOutlined className=" mr-1" /> 新建团队
           </footer>

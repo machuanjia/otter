@@ -1,41 +1,43 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-21 15:09:49
- * @LastEditTime: 2021-10-28 11:15:35
+ * @LastEditTime: 2021-10-28 14:56:28
  * @FilePath: /otter/src/layouts/Project/index.tsx
  * @Description:
  */
 
 import { useEffect } from 'react'
 
-import { CloseOutlined, EllipsisOutlined, PlusCircleOutlined, ProjectOutlined } from '@ant-design/icons'
+import {
+  CloseOutlined,
+  EllipsisOutlined,
+  PlusCircleOutlined,
+  ProjectOutlined,
+} from '@ant-design/icons'
 import { Avatar, Drawer } from 'antd'
+import { DRAWER_SIZE, SimpleList } from 'otter-pro'
 
 import { useAppDispatch, useAppSelector } from '@/stores'
-import { selectProjectVisible, setProjectVisible, setTeamVisible } from '@/stores/app'
+import { selectAppProjectVisible, setProjectVisible, setTeamVisible } from '@/stores/app'
 import { selectProjects } from '@/stores/project'
 import ProjectService from '@/stores/project/project.service'
 
 import styles from './index.module.less'
 
-const List = ({ list, selected = '' }) => {
-  return <>{list.map((n: any) => {
-    return (
-      <div className={`${styles['list-item']} ${n.id === selected ? 'bg-active' : 'bg-white'}`}>
-        <div className={styles['list-text']}>{n.name}</div>
-        <div className={styles['list-action']}><EllipsisOutlined /></div>
-      </div>
-    );
-  })}</>
-}
-
 const Project = () => {
-  const isVisible = useAppSelector(selectProjectVisible)
+  const isVisible = useAppSelector(selectAppProjectVisible)
   const dispatch = useAppDispatch()
   const projects = useAppSelector(selectProjects)
   useEffect(() => {
     dispatch(ProjectService.getProjects())
   }, [])
+  const handleProject = () => {}
+  const SuffixItem = ({ entity }) => {
+    const handleSuffix = () => {
+      console.log(entity)
+    }
+    return <EllipsisOutlined onClick={handleSuffix} />
+  }
   return (
     <>
       <div
@@ -52,7 +54,7 @@ const Project = () => {
         title={null}
         placement="left"
         closable={false}
-        width={260}
+        width={DRAWER_SIZE.SM}
         visible={isVisible}
         mask={false}
         className="project-wrap"
@@ -63,15 +65,23 @@ const Project = () => {
               <Avatar>U</Avatar>
               <span className="ml-2 text-secondary">紫金矿业</span>
             </div>
-            <div className=" w-6 h-6 hover:bg-hover flex justify-center items-center"> <CloseOutlined
-              onClick={() => {
-                dispatch(setProjectVisible(false))
-              }}
-              className="text-secondary hover:text-primary cursor-pointer"
-            /></div>
+            <div className=" w-6 h-6 hover:bg-hover flex justify-center items-center">
+              {' '}
+              <CloseOutlined
+                onClick={() => {
+                  dispatch(setProjectVisible(false))
+                }}
+                className="text-secondary hover:text-primary cursor-pointer"
+              />
+            </div>
           </header>
           <div className=" flex-1">
-            <List list={projects} />
+            <SimpleList
+              list={projects}
+              onItemClick={handleProject}
+              Suffix={SuffixItem}
+              className={styles['project-list']}
+            />
           </div>
           <footer className="border-t border-solid border-divider p-2 flex justify-center items-center text-secondary cursor-pointer hover:text-primary">
             <PlusCircleOutlined className=" mr-1" /> 新建项目

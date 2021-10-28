@@ -1,48 +1,27 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-27 17:46:33
- * @LastEditTime: 2021-10-28 10:38:05
- * @FilePath: /otter/src/layouts/Preference/PreferencePop.tsx
+ * @LastEditTime: 2021-10-28 14:16:22
+ * @FilePath: /otter/src/layouts/Preference/PopContent.tsx
  * @Description:
  */
 
 import { LogoutOutlined, UserOutlined } from '@ant-design/icons'
 import { Avatar } from 'antd'
+import { SimpleList } from 'otter-pro'
 
-export const List = ({ list, selectAction }) => {
-    const itemAction = (e,n)=>{
-        e.stopPropagation()
-        selectAction(n)
-    }
-    return (
-        <div>
-            {list.map((n: any, index) => {
-                return (
-                    <div
-                        key={index}
-                        onClick={(e) => { itemAction(e,n) }}
-                        className={`text-secondary cursor-pointer hover:bg-hover p-2 pl-4 pr-4`}
-                    >
-                        {n.name}
-                    </div>
-                )
-            })}
-        </div>
-    )
-}
-
-export const Content = ({teamAction}) => {
+export const Content = ({ teamAction }) => {
     const list = [
         {
-            id: '1',
+            id: 'account',
             name: '账号设置',
         },
         {
-            id: '2',
+            id: 'cost',
             name: '配额与计费',
         },
         {
-            id: '1',
+            id: 'team',
             name: '切换团队',
         },
     ]
@@ -58,7 +37,7 @@ export const Content = ({teamAction}) => {
                 </div>
             </header>
             <div>
-                <List list={list} selectAction={teamAction} />
+                <SimpleList list={list} onItemClick={teamAction} />
             </div>
             <footer className=" border-t border-solid border-divider p-2  pl-4 pr-4 flex items-center text-secondary cursor-pointer hover:text-primary">
                 <LogoutOutlined className=" mr-1" /> 退出
