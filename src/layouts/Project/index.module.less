@@ -1,26 +1,45 @@
 .avatar {
-  @apply flex flex-col items-center justify-center mb-2 mt-3 text-white border !important;
+  @apply flex flex-col items-center justify-center text-white border !important;
   background: none;
   > span {
     display: inline-block;
     transform: scale(0.85);
   }
 }
-.project-avatar{
+.list-item {
+  @apply text-secondary cursor-pointer p-2 pl-4 pr-4 flex flex-row items-center;
+  .list-text{
+    @apply flex-1;
+  }
+  .list-action{
+    @apply hidden;
+  }
+  &:hover {
+    @apply bg-hover;
+    .list-action{
+      @apply block;
+    }
+    
+  }
+}
+
+.project-avatar {
   @apply border !important;
 }
-.arrow{
-  top:18px;
+
+.arrow {
+  top: 14px;
   right: -14px;
   transform: rotate(45deg);
   @apply w-4 h-4 bg-white absolute;
 }
-:global{
-  .project-wrap{
+
+:global {
+  .project-wrap {
     @apply left-14;
-    .ant-drawer-content-wrapper{
-      @apply shadow-none border-r border-solid border-divider !important;
-      .ant-drawer-body{
+    .ant-drawer-content-wrapper {
+      @apply border-r border-solid border-divider !important;
+      .ant-drawer-body {
         @apply p-0;
       }
     }

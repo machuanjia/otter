@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-19 19:09:37
- * @LastEditTime: 2021-10-27 10:32:46
+ * @LastEditTime: 2021-10-27 17:58:52
  * @FilePath: /otter/src/stores/app/index.ts
  * @Description:
  */
@@ -21,6 +21,7 @@ export interface AppState {
   status: STATUS.IDLE | STATUS.LOADING | STATUS.FAILED
   routes: IRoute[]
   isProjectVisible: boolean
+  isTeamVisible: boolean
 }
 
 const initialState: AppState = {
@@ -29,6 +30,7 @@ const initialState: AppState = {
   status: STATUS.LOADING,
   routes: [],
   isProjectVisible: false,
+  isTeamVisible: false
 }
 
 export const appSlice = createSlice({
@@ -40,6 +42,9 @@ export const appSlice = createSlice({
     },
     setProjectVisible: (state, action) => {
       state.isProjectVisible = action.payload
+    },
+    setTeamVisible: (state, action) => {
+      state.isTeamVisible = action.payload
     },
   },
   extraReducers: (builder) => {
@@ -54,9 +59,10 @@ export const appSlice = createSlice({
       })
   },
 })
-export const { setRoutes, setProjectVisible } = appSlice.actions
+export const { setRoutes, setProjectVisible, setTeamVisible } = appSlice.actions
 export const selectPermissions = (state: RootState) => state.app.permissions
 export const selectRoutes = (state: RootState) => state.app.routes
 export const selectStatus = (state: RootState) => state.app.status
 export const selectProjectVisible = (state: RootState) => state.app.isProjectVisible
+export const selectTeamVisible = (state: RootState) => state.app.isTeamVisible
 export default appSlice.reducer
