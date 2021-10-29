@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-19 19:09:37
- * @LastEditTime: 2021-10-29 18:03:57
+ * @LastEditTime: 2021-10-29 18:34:52
  * @FilePath: /otter/src/stores/app/index.ts
  * @Description:
  */
@@ -60,7 +60,7 @@ export const appSlice = createSlice({
         // @ts-ignore
         state.permissions = action.payload.permissions
         // state.permissionRoutes = action.payload.permissionRoutes
-        // state.routes = action.payload.routes
+        state.routes = action.payload.routes
         state.status = STATUS.IDLE
       })
       .addCase(AppService.signIn.pending,(state)=>{

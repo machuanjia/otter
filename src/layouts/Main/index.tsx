@@ -1,18 +1,23 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:35:49
- * @LastEditTime: 2021-10-29 18:07:54
+ * @LastEditTime: 2021-10-29 18:27:59
  * @FilePath: /otter/src/layouts/Main/index.tsx
  * @Description:
  */
 import React, { Component } from 'react'
 
-// import { STATUS } from '@/constants'
+// @ts-ignore
+// eslint-disable-next-line import/order
 import { GuardDecorator } from '@/decorators/Guard'
-import { AsyncRoutes } from '@/routes'
+
+// import { STATUS } from '@/constants'
+// import { AsyncRoutes } from '@/routes'
 // import { useAppDispatch, useAppSelector } from '@/stores'
 // import { selectStatus } from '@/stores/app'
 // import AppService from '@/stores/app/app.service'
+
+import { RouteViewer } from '@/routes'
 
 import Help from '../Help'
 import Logo from '../Logo'
@@ -65,6 +70,8 @@ class Main extends Component {
     // this.props.history.push('/dashboard')
   }
   render() {
+    // @ts-ignore
+    const { route } = this.props
     return <>
       <section className="h-screen flex flex-row">
         <nav className={`${styles['main-nav']} flex flex-col items-center`}>
@@ -82,7 +89,7 @@ class Main extends Component {
           </footer>
         </nav>
         <div id="otter" className="flex-1">
-          <AsyncRoutes />
+          <RouteViewer routers={route.children} />
         </div>
       </section>
     </>
