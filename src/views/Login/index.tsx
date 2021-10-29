@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 15:09:45
- * @LastEditTime: 2021-10-29 17:01:43
+ * @LastEditTime: 2021-10-29 18:08:35
  * @FilePath: /otter/src/views/Login/index.tsx
  * @Description:
  */
@@ -19,8 +19,7 @@ const Login = () => {
   const history = useHistory()
   useEffect(() => {
     if(token){
-      console.log("toke2323232n:",token)
-      history.push('/')
+      history.push('/dashboard')
     }
   }, [token])
   const handleLogin = () => {
