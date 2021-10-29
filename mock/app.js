@@ -1,11 +1,15 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-28 11:31:15
- * @LastEditTime: 2021-10-28 11:34:57
+ * @LastEditTime: 2021-10-29 15:57:54
  * @FilePath: /otter/mock/app.js
  * @Description: 
  */
 const proxy = {
+    'GET /api/v1/signIn':{
+      code: 200,
+      data: 'ywetywreytrwqtyertqywretqwreytqwretrqwtuetuqwyretyqw'
+    },
     'GET /api/v1/user/info': {
       code: 200,
       data: {
