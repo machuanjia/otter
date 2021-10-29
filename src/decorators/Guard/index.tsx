@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 19:03:31
- * @LastEditTime: 2021-10-29 18:01:47
+ * @LastEditTime: 2021-10-29 18:16:52
  * @FilePath: /otter/src/decorators/Guard/index.tsx
  * @Description:
  */
@@ -41,7 +41,6 @@ export const GuardDecorator = () => (WrappedComponent) => {
     render() {
       // @ts-ignore
       const { status } = this.props
-      console.log(status)
       return <>{status === STATUS.LOADING ? <div className=" h-full w-full flex justify-center items-center absolute"><GlobalLoading description="卓越、有爱" className=""/></div> : <WrappedComponent {...this.props} />}</>
     }
   }
