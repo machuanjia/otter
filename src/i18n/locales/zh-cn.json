@@ -1,4 +1,9 @@
 {
   "home": "首页",
-  "welcome": "欢迎来首页"
+  "welcome": "欢迎来首页",
+  "dashboard": "控制台",
+  "data": "数据",
+  "dataLake": "数据湖",
+  "dataSet": "数据集",
+  "dataTask": "标注任务"
 }

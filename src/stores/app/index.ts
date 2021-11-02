@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-19 19:09:37
- * @LastEditTime: 2021-10-29 18:34:52
+ * @LastEditTime: 2021-11-02 10:58:38
  * @FilePath: /otter/src/stores/app/index.ts
  * @Description:
  */
@@ -16,7 +16,6 @@ import AppService from './app.service'
 import type { RootState } from '../store'
 
 export interface AppState {
-  value: number
   token: string
   permissions: string[]
   status: STATUS.IDLE | STATUS.LOADING | STATUS.FAILED
@@ -27,7 +26,6 @@ export interface AppState {
 }
 
 const initialState: AppState = {
-  value: 0,
   token: '',
   permissions: [],
   status: STATUS.LOADING,

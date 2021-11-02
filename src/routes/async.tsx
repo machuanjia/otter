@@ -1,20 +1,20 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:12:45
- * @LastEditTime: 2021-10-29 18:56:28
+ * @LastEditTime: 2021-11-02 11:27:49
  * @FilePath: /otter/src/routes/async.tsx
  * @Description:
  */
 import { lazy } from 'react'
 
-// import i18n from 'i18next'
+import i18n from 'i18next'
 
 const routes = [
   {
     path: '/dashboard',
     meta: {
       key: 'Dashboard',
-      name: 'dashboard',
+      name: i18n.t('dashboard'),
       icon: 'dashboard',
       permission: 'dashboard*',
     },
@@ -25,8 +25,8 @@ const routes = [
     component: lazy(() => import('@/views/App')),
     meta: {
       key: 'otterData',
+      name: i18n.t('data'),
       container: 'otterData',
-      name: '数据',
       icon: 'data',
       permission: 'home',
     },
@@ -35,8 +35,8 @@ const routes = [
       component: lazy(() => import('@/views/App')),
       meta: {
         key: 'otterDataLake',
+        name: i18n.t('dataLake'),
         container: 'otterData',
-        name: '数据湖',
         icon: 'data',
         permission: 'dataLake*',
       }
@@ -45,8 +45,8 @@ const routes = [
       component: lazy(() => import('@/views/App')),
       meta: {
         key: 'otterDataSet',
+        name: i18n.t('dataSet'),
         container: 'otterData',
-        name: '数据集',
         icon: 'data',
         permission: 'dataSet*',
       }
@@ -55,8 +55,8 @@ const routes = [
       component: lazy(() => import('@/views/App')),
       meta: {
         key: 'otterDataRemark',
+        name: i18n.t('dataTask'),
         container: 'otterData',
-        name: '标注任务',
         icon: 'data',
         permission: 'dataRemark*',
       }

@@ -1,4 +1,9 @@
 {
   "home": "Home",
-  "welcome": "Welcome To Home"
+  "welcome": "Welcome To Home",
+  "dashboard": "控制台",
+  "data": "数据",
+  "dataLake": "数据湖",
+  "dataSet": "数据集",
+  "dataTask": "标注任务"
 }
