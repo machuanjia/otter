@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:35:49
- * @LastEditTime: 2021-11-04 15:11:21
+ * @LastEditTime: 2021-11-04 17:03:05
  * @FilePath: /otter/src/layouts/Main/index.tsx
  * @Description:
  */
@@ -51,7 +51,7 @@ class Main extends Component {
             <header className=" flex flex-row items-center p-4 border-b border-solid border-divider">
               <Bread />
             </header>
-            <div className={` flex-1 bg-main p-1 ${styles['main-body']}`}>
+            <div className={` flex-1 bg-main ${styles['main-body']}`}>
               <RouteViewer routers={route.children} />
             </div>
           </div>
