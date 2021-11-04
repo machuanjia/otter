@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:12:45
- * @LastEditTime: 2021-11-02 11:27:49
+ * @LastEditTime: 2021-11-04 14:50:53
  * @FilePath: /otter/src/routes/async.tsx
  * @Description:
  */
@@ -18,7 +18,7 @@ const routes = [
       icon: 'dashboard',
       permission: 'dashboard*',
     },
-    component: lazy(() => import('@/views/Dashboard')),
+    component: lazy(() => import('@/views/Dashboard'))
   },
   {
     path: '/data',

@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-21 17:06:46
- * @LastEditTime: 2021-10-28 14:59:27
+ * @LastEditTime: 2021-11-04 15:42:50
  * @FilePath: /otter/src/layouts/Nav/index.tsx
  * @Description:
  */
@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '@/stores'
 import { selectAppRoutes, setProjectVisible } from '@/stores/app'
 
-import icons from './icons'
+import icons from '../../icons'
 import styles from './index.module.less'
 
 const { SubMenu } = Menu

@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:35:49
- * @LastEditTime: 2021-10-29 18:27:59
+ * @LastEditTime: 2021-11-04 15:11:21
  * @FilePath: /otter/src/layouts/Main/index.tsx
  * @Description:
  */
@@ -10,15 +10,9 @@ import React, { Component } from 'react'
 // @ts-ignore
 // eslint-disable-next-line import/order
 import { GuardDecorator } from '@/decorators/Guard'
-
-// import { STATUS } from '@/constants'
-// import { AsyncRoutes } from '@/routes'
-// import { useAppDispatch, useAppSelector } from '@/stores'
-// import { selectStatus } from '@/stores/app'
-// import AppService from '@/stores/app/app.service'
-
 import { RouteViewer } from '@/routes'
 
+import Bread from '../Bread'
 import Help from '../Help'
 import Logo from '../Logo'
 import Nav from '../Nav'
@@ -27,72 +21,43 @@ import Preference from '../Preference'
 import Project from '../Project'
 import styles from './index.module.less'
 
-// const Main = () => {
-//   const status = useAppSelector(selectStatus)
-//   const dispatch = useAppDispatch()
-//   useEffect(() => {
-//     dispatch(AppService.getInfo())
-//   }, [])
-//   if (status !== STATUS.IDLE) {
-//     return <div>loading1212121</div>
-//   }
-//   return (
-//     <section className="h-screen flex flex-row">
-//       <nav className={`${styles['main-nav']} flex flex-col items-center`}>
-//         <header className=" pt-2 flex flex-col items-center">
-//           <Logo />
-//           <Project />
-//         </header>
-//         <div className=" flex-1">
-//           <Nav />
-//         </div>
-//         <footer className=" flex flex-col justify-center items-center">
-//           <Notice />
-//           <Help />
-//           <Preference />
-//         </footer>
-//       </nav>
-//       <div id="otter" className="flex-1">
-//         <AsyncRoutes />
-//       </div>
-//       <div id="otterData" className="flex-1 hidden" />
-//       <div id="otterExperiment" className="flex-1 hidden"/>
-//       <div id="otterModel" className="flex-1 hidden"/>
-//       <div id="otterTest" className="flex-1 hidden"/>
-//       <div id="otterPublish" className="flex-1 hidden"/>
-//     </section>
-//   )
-// }
 @GuardDecorator()
 class Main extends Component {
   componentDidMount() {
     // @ts-ignore
-    // this.props.history.push('/dashboard')
+    this.props.history.push('/dashboard')
   }
   render() {
     // @ts-ignore
     const { route } = this.props
-    return <>
-      <section className="h-screen flex flex-row">
-        <nav className={`${styles['main-nav']} flex flex-col items-center`}>
-          <header className=" pt-2 flex flex-col items-center">
-            <Logo />
-            <Project />
-          </header>
-          <div className=" flex-1">
-            <Nav />
+    return (
+      <>
+        <section className="h-screen flex flex-row">
+          <nav className={`${styles['main-nav']} flex flex-col items-center`}>
+            <header className=" pt-2 flex flex-col items-center">
+              <Logo />
+              <Project />
+            </header>
+            <div className=" flex-1">
+              <Nav />
+            </div>
+            <footer className=" flex flex-col justify-center items-center">
+              <Notice />
+              <Help />
+              <Preference />
+            </footer>
+          </nav>
+          <div id="otter" className={`flex-1 flex flex-col`}>
+            <header className=" flex flex-row items-center p-4 border-b border-solid border-divider">
+              <Bread />
+            </header>
+            <div className={` flex-1 bg-main p-1 ${styles['main-body']}`}>
+              <RouteViewer routers={route.children} />
+            </div>
           </div>
-          <footer className=" flex flex-col justify-center items-center">
-            <Notice />
-            <Help />
-            <Preference />
-          </footer>
-        </nav>
-        <div id="otter" className="flex-1">
-          <RouteViewer routers={route.children} />
-        </div>
-      </section>
-    </>
+        </section>
+      </>
+    )
   }
 }
 export default Main
