@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-19 11:49:57
- * @LastEditTime: 2021-10-26 17:40:12
+ * @LastEditTime: 2021-11-05 15:25:48
  * @FilePath: /otter/tailwind.config.js
  * @Description:
  */
@@ -48,8 +48,8 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require('tailwindcss'),
-    require('autoprefixer'),
+    // require('tailwindcss'),
+    // require('autoprefixer'),
     purgecss({
       content: ['./layouts/**/*.html', './src/**/*.tsx'],
       defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
