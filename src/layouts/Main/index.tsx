@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:35:49
- * @LastEditTime: 2021-11-04 17:03:05
+ * @LastEditTime: 2021-11-08 10:42:43
  * @FilePath: /otter/src/layouts/Main/index.tsx
  * @Description:
  */
@@ -25,7 +25,7 @@ import styles from './index.module.less'
 class Main extends Component {
   componentDidMount() {
     // @ts-ignore
-    this.props.history.push('/dashboard')
+    // this.props.history.push('/dashboard')
   }
   render() {
     // @ts-ignore
