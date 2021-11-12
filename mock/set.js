@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-11-08 10:54:54
- * @LastEditTime: 2021-11-11 14:01:52
+ * @LastEditTime: 2021-11-12 10:06:44
  * @FilePath: /otter/mock/set.js
  * @Description:
  */
@@ -62,8 +62,8 @@ const proxy = {
   'GET /api/v1/sets/:id': {
     code: 200,
     data: {
-      id: '1',
-      name: '身份证拍摄扫描',
+      id: '11',
+      name: '身份证拍摄扫描11',
       status: 1,
       description: '这个数据集是将身份证数据集打印后手动拍照构造',
     }

@@ -1,14 +1,13 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:35:49
- * @LastEditTime: 2021-11-08 10:42:43
+ * @LastEditTime: 2021-11-12 14:05:13
  * @FilePath: /otter/src/layouts/Main/index.tsx
  * @Description:
  */
 import React, { Component } from 'react'
 
-// @ts-ignore
-// eslint-disable-next-line import/order
+import { RouteDecorator } from '@/decorators'
 import { GuardDecorator } from '@/decorators/Guard'
 import { RouteViewer } from '@/routes'
 
@@ -22,6 +21,7 @@ import Project from '../Project'
 import styles from './index.module.less'
 
 @GuardDecorator()
+@RouteDecorator()
 class Main extends Component {
   componentDidMount() {
     // @ts-ignore
