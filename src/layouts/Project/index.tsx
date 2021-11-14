@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-21 15:09:49
- * @LastEditTime: 2021-10-28 14:56:28
+ * @LastEditTime: 2021-11-14 15:54:16
  * @FilePath: /otter/src/layouts/Project/index.tsx
  * @Description:
  */
@@ -17,19 +17,15 @@ import {
 import { Avatar, Drawer } from 'antd'
 import { DRAWER_SIZE, SimpleList } from 'otter-pro'
 
-import { useAppDispatch, useAppSelector } from '@/stores'
-import { selectAppProjectVisible, setProjectVisible, setTeamVisible } from '@/stores/app'
-import { selectProjects } from '@/stores/project'
-import ProjectService from '@/stores/project/project.service'
+import { useProjectModel, useTeamModel } from '@/models'
 
 import styles from './index.module.less'
 
 const Project = () => {
-  const isVisible = useAppSelector(selectAppProjectVisible)
-  const dispatch = useAppDispatch()
-  const projects = useAppSelector(selectProjects)
+  const { setIsProjectVisible, getProjects, isProjectVisible, list } = useProjectModel()
+  const { setIsTeamVisible } = useTeamModel()
   useEffect(() => {
-    dispatch(ProjectService.getProjects())
+    getProjects()
   }, [])
   const handleProject = () => {}
   const SuffixItem = ({ entity }) => {
@@ -43,19 +39,19 @@ const Project = () => {
       <div
         className="w-14 h-11 flex justify-center items-center bg-primary relative overflow-hidden opacity-90 cursor-pointer hover:opacity-100"
         onClick={() => {
-          dispatch(setProjectVisible(true))
-          dispatch(setTeamVisible(false))
+          setIsProjectVisible(true)
+          setIsTeamVisible(false)
         }}
       >
         <Avatar className={styles.avatar} icon={<ProjectOutlined />} />
-        {isVisible && <div className={styles.arrow} />}
+        {isProjectVisible && <div className={styles.arrow} />}
       </div>
       <Drawer
         title={null}
         placement="left"
         closable={false}
         width={DRAWER_SIZE.SM}
-        visible={isVisible}
+        visible={isProjectVisible}
         mask={false}
         className="project-wrap"
       >
@@ -69,7 +65,7 @@ const Project = () => {
               {' '}
               <CloseOutlined
                 onClick={() => {
-                  dispatch(setProjectVisible(false))
+                  setIsProjectVisible(false)
                 }}
                 className="text-secondary hover:text-primary cursor-pointer"
               />
@@ -77,7 +73,7 @@ const Project = () => {
           </header>
           <div className=" flex-1">
             <SimpleList
-              list={projects}
+              list={list}
               onItemClick={handleProject}
               Suffix={SuffixItem}
               className={styles['project-list']}

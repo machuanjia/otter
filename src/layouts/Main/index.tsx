@@ -1,14 +1,16 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:35:49
- * @LastEditTime: 2021-11-12 14:05:13
+ * @LastEditTime: 2021-11-14 15:33:41
  * @FilePath: /otter/src/layouts/Main/index.tsx
  * @Description:
  */
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 
-import { RouteDecorator } from '@/decorators'
-import { GuardDecorator } from '@/decorators/Guard'
+import { GlobalLoading } from 'otter-pro'
+
+import { useRoute } from '@/hooks'
+import { useAppModel } from '@/models'
 import { RouteViewer } from '@/routes'
 
 import Bread from '../Bread'
@@ -20,18 +22,20 @@ import Preference from '../Preference'
 import Project from '../Project'
 import styles from './index.module.less'
 
-@GuardDecorator()
-@RouteDecorator()
-class Main extends Component {
-  componentDidMount() {
-    // @ts-ignore
-    // this.props.history.push('/dashboard')
-  }
-  render() {
-    // @ts-ignore
-    const { route } = this.props
-    return (
-      <>
+const Main = ({ route }) => {
+  const { getUserInfo, loading } = useAppModel()
+  useRoute()
+  useEffect(() => {
+    getUserInfo()
+  }, [])
+
+  return (
+    <>
+      {loading ? (
+        <div className=" h-full w-full flex justify-center items-center absolute">
+          <GlobalLoading description="卓越、有爱" className="" />
+        </div>
+      ) : (
         <section className="h-screen flex flex-row">
           <nav className={`${styles['main-nav']} flex flex-col items-center`}>
             <header className=" pt-2 flex flex-col items-center">
@@ -56,8 +60,8 @@ class Main extends Component {
             </div>
           </div>
         </section>
-      </>
-    )
-  }
+      )}
+    </>
+  )
 }
 export default Main

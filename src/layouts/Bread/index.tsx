@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-11-04 14:24:25
- * @LastEditTime: 2021-11-04 17:39:31
+ * @LastEditTime: 2021-11-14 15:47:06
  * @FilePath: /otter/src/layouts/Bread/index.tsx
  * @Description:
  */
@@ -10,10 +10,10 @@ import { RightOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 
 import icons from '@/icons'
-import { selectAppBread, useAppSelector } from '@/stores'
+import { useAppModel } from '@/models'
 
 const Bread = () => {
-  const bread = useAppSelector(selectAppBread)
+  const { bread } = useAppModel()
   return (
     <span className={` flex flex-row`}>
       {bread.map((n: { icon: string; name: string; path: string }, index) => {

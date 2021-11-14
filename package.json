@@ -16,6 +16,7 @@
     "antd": "^4.16.13",
     "axios": "^0.23.0",
     "customize-cra": "^1.0.0",
+    "hox": "^1.1.4",
     "i18next": "^21.3.2",
     "i18next-browser-languagedetector": "^6.1.2",
     "mocker-api": "^2.9.3",
