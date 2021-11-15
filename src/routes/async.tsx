@@ -1,7 +1,7 @@
 /*
  * @Author: D.Y.M
  * @Date: 2021-10-20 16:12:45
- * @LastEditTime: 2021-11-14 16:07:21
+ * @LastEditTime: 2021-11-15 11:45:28
  * @FilePath: /otter/src/routes/async.tsx
  * @Description:
  */
@@ -41,7 +41,7 @@ const routes = [
         permission: 'dataLake*',
       }
     }, {
-      path: '/set',
+      path: '/set/index',
       component: lazy(() => import('@/views/App')),
       meta: {
         key: 'otterDataSet',
